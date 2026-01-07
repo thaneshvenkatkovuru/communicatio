@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" onsubmit="login(event)">
+            <h2>Member Access</h2>
+            <p>Please log in to enter the portal</p>
+
+            <div class="input-group">
+                <input type="text" placeholder="Username" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="login-btn">Enter Portal</button>
+
+            <p id="error" style="color:red; margin-top:10px;"></p>
+        </form>
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("password").value;
+
+            if (password === "Tillu") {
+                window.location.href = "dashboard.html";
+            } else {
+                document.getElementById("error").innerText = "Wrong password!";
+            }
+        }
+    </script>
+</body>
+</html>
