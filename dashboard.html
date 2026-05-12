@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Member Dashboard</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -191,6 +190,146 @@
             font-weight:500;
         }
 
+        /* LOGOUT POPUP */
+
+        .logout-popup{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(15,23,42,0.45);
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            opacity:0;
+            visibility:hidden;
+
+            transition:0.3s ease;
+            z-index:999;
+        }
+
+        .logout-popup.active{
+            opacity:1;
+            visibility:visible;
+        }
+
+        .logout-box{
+            width:100%;
+            max-width:420px;
+            background:rgba(255,255,255,0.78);
+            backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,0.4);
+            border-radius:28px;
+            padding:45px 35px;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+
+            transform:scale(0.9);
+            transition:0.3s ease;
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .logout-popup.active .logout-box{
+            transform:scale(1);
+        }
+
+        .logout-box::before{
+            content:'';
+            position:absolute;
+            width:220px;
+            height:220px;
+            background:linear-gradient(135deg,#2563eb22,#7c3aed22);
+            border-radius:50%;
+            top:-100px;
+            right:-80px;
+        }
+
+        .icon{
+            width:90px;
+            height:90px;
+            margin:auto;
+            margin-bottom:20px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#ef4444,#dc2626);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:40px;
+            color:white;
+            box-shadow:0 10px 25px rgba(239,68,68,0.3);
+            position:relative;
+            z-index:2;
+        }
+
+        .logout-box h1{
+            font-size:34px;
+            font-weight:700;
+            color:#111827;
+            margin-bottom:12px;
+            position:relative;
+            z-index:2;
+        }
+
+        .logout-box p{
+            font-size:15px;
+            line-height:1.8;
+            color:#4b5563;
+            margin-bottom:30px;
+            position:relative;
+            z-index:2;
+        }
+
+        .buttons{
+            display:flex;
+            justify-content:center;
+            gap:15px;
+            flex-wrap:wrap;
+            position:relative;
+            z-index:2;
+        }
+
+        .btn{
+            border:none;
+            cursor:pointer;
+            text-decoration:none;
+            padding:13px 24px;
+            border-radius:14px;
+            font-size:14px;
+            font-weight:600;
+            transition:0.3s ease;
+            min-width:140px;
+        }
+
+        .logout-btn{
+            background:linear-gradient(135deg,#ef4444,#dc2626);
+            color:white;
+            box-shadow:0 10px 20px rgba(239,68,68,0.25);
+        }
+
+        .logout-btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 15px 25px rgba(239,68,68,0.35);
+        }
+
+        .cancel-btn{
+            background:white;
+            color:#2563eb;
+            border:1px solid #dbeafe;
+            box-shadow:0 6px 15px rgba(0,0,0,0.05);
+        }
+
+        .cancel-btn:hover{
+            transform:translateY(-3px);
+            background:#eff6ff;
+        }
+
         /* RESPONSIVE */
 
         @media(max-width:768px){
@@ -255,7 +394,7 @@
             </li>
 
             <li>
-                <a href="logout.html">
+                <a href="#" id="logoutBtn">
                     Logout
                 </a>
             </li>
@@ -312,6 +451,64 @@
         </div>
 
     </main>
+
+    <!-- LOGOUT POPUP -->
+
+    <div class="logout-popup" id="logoutPopup">
+
+        <div class="logout-box">
+
+            <div class="icon">
+                ⎋
+            </div>
+
+            <h1>Logout</h1>
+
+            <p>
+                Are you sure you want to logout from your account?
+                You can login again anytime.
+            </p>
+
+            <div class="buttons">
+
+                <a href="Index.html" class="btn logout-btn">
+                    Yes, Logout
+                </a>
+
+                <button class="btn cancel-btn" id="closePopup">
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const logoutBtn =
+        document.getElementById("logoutBtn");
+
+        const logoutPopup =
+        document.getElementById("logoutPopup");
+
+        const closePopup =
+        document.getElementById("closePopup");
+
+        logoutBtn.addEventListener("click", function(e){
+
+            e.preventDefault();
+
+            logoutPopup.classList.add("active");
+        });
+
+        closePopup.addEventListener("click", function(){
+
+            logoutPopup.classList.remove("active");
+        });
+
+    </script>
 
 </body>
 </html>
