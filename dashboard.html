@@ -3,43 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <title>Member Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Member Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            background:
+            radial-gradient(circle at top left,#2563eb22,transparent 30%),
+            radial-gradient(circle at bottom right,#7c3aed22,transparent 30%),
+            #f3f6fb;
+            overflow-x:hidden;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            width:100%;
+            padding:20px 7%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:20px;
+
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(16px);
+            border-bottom:1px solid rgba(255,255,255,0.4);
+
+            box-shadow:0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo{
+            font-size:30px;
+            font-weight:700;
+            color:#111827;
+        }
+
+        .logo span{
+            color:#2563eb;
+        }
+
+        .nav-links{
+            display:flex;
+            list-style:none;
+            gap:18px;
+            flex-wrap:wrap;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#374151;
+            font-size:15px;
+            font-weight:500;
+            padding:10px 18px;
+            border-radius:12px;
+            transition:0.3s ease;
+        }
+
+        .nav-links a:hover{
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            color:white;
+            box-shadow:0 10px 20px rgba(37,99,235,0.25);
+        }
+
+        /* MAIN CONTENT */
+
+        .content{
+            width:100%;
+            max-width:1200px;
+            margin:auto;
+            padding:50px 25px;
+        }
+
+        .welcome-box{
+            position:relative;
+            overflow:hidden;
+
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(16px);
+
+            border-radius:28px;
+            padding:45px;
+            margin-bottom:35px;
+
+            border:1px solid rgba(255,255,255,0.4);
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .welcome-box::before{
+            content:'';
+            position:absolute;
+            width:280px;
+            height:280px;
+            background:linear-gradient(135deg,#2563eb22,#7c3aed22);
+            border-radius:50%;
+            top:-120px;
+            right:-100px;
+        }
+
+        .welcome-box h1{
+            font-size:42px;
+            color:#111827;
+            margin-bottom:12px;
+            position:relative;
+            z-index:2;
+        }
+
+        .welcome-box p{
+            font-size:16px;
+            color:#6b7280;
+            line-height:1.8;
+            position:relative;
+            z-index:2;
+        }
+
+        /* MESSAGE BOARD */
+
+        .message-board{
+            background:white;
+            border-radius:24px;
+            padding:30px;
+            border:1px solid #e5e7eb;
+
+            box-shadow:0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .message-board h3{
+            font-size:26px;
+            color:#111827;
+            margin-bottom:25px;
+        }
+
+        .msg-card{
+            position:relative;
+            background:#f9fbff;
+            border-radius:20px;
+            padding:25px;
+            border-left:6px solid #2563eb;
+            transition:0.3s ease;
+
+            box-shadow:0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .msg-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .msg-card strong{
+            display:block;
+            font-size:18px;
+            color:#111827;
+            margin-bottom:10px;
+        }
+
+        .msg-card p{
+            font-size:15px;
+            color:#4b5563;
+            line-height:1.8;
+            margin-bottom:15px;
+        }
+
+        .msg-card small{
+            display:inline-block;
+            background:#eef2ff;
+            color:#4b5563;
+            padding:7px 14px;
+            border-radius:50px;
+            font-size:12px;
+            font-weight:500;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px){
+
+            .navbar{
+                padding:20px;
+                flex-direction:column;
+                align-items:flex-start;
+            }
+
+            .logo{
+                font-size:26px;
+            }
+
+            .welcome-box{
+                padding:30px 25px;
+            }
+
+            .welcome-box h1{
+                font-size:30px;
+            }
+
+            .welcome-box p{
+                font-size:14px;
+            }
+
+            .message-board{
+                padding:22px;
+            }
+
+            .message-board h3{
+                font-size:22px;
+            }
+        }
+
+    </style>
+
 </head>
-<body class="dashboard-body">
+
+<body>
+
+    <!-- NAVBAR -->
+
     <nav class="navbar">
-        <div class="logo">Member<span>Connect</span></div>
+
+        <div class="logo">
+            Member<span>Connect</span>
+        </div>
+
         <ul class="nav-links">
 
-           
-   <nav class="navbar">
-    
+            <li>
+                <a href="announcements.html">
+                    Announcements
+                </a>
+            </li>
 
-    <ul class="nav-links">
-       <li><a href="announcements.html">Announcements</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="logout.html">Logout</a></li>
-    </ul>
-</nav>
-            
-       </ul>
-</nav>
-   
+            <li>
+                <a href="#">
+                    Messages
+                </a>
+            </li>
+
+            <li>
+                <a href="logout.html">
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- MAIN CONTENT -->
 
     <main class="content">
-        <h1>Welcome Back, Member</h1>
-        <div class="message-board">
-            <h3>Latest Private Communications</h3>
-            <div class="msg-card">
-                <strong>Admin:</strong>
-                <p>The annual meeting is scheduled for next Friday at 6:00 PM.</p>
-                <small>Posted 3 hours ago</small>
-            </div>
+
+        <!-- WELCOME SECTION -->
+
+        <div class="welcome-box">
+
+            <h1>
+                Welcome Back, Member 👋
+            </h1>
+
+            <p>
+                Stay connected with your community, check announcements,
+                and manage your latest communications from the dashboard.
+            </p>
+
         </div>
+
+        <!-- MESSAGE BOARD -->
+
+        <div class="message-board">
+
+            <h3>
+                Latest Private Communications
+            </h3>
+
+            <div class="msg-card">
+
+                <strong>
+                    Admin
+                </strong>
+
+                <p>
+                    The annual meeting is scheduled for next Friday
+                    at 6:00 PM in the main conference hall.
+                    Please make sure to attend the meeting.
+                </p>
+
+                <small>
+                    Posted 3 hours ago
+                </small>
+
+            </div>
+
+        </div>
+
     </main>
+
 </body>
 </html>
