@@ -4,12 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Login</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            background:
+            radial-gradient(circle at top left,#2563eb33,transparent 30%),
+            radial-gradient(circle at bottom right,#7c3aed33,transparent 30%),
+            #f3f6fb;
+            padding:20px;
+        }
+
+        .login-container{
+            width:100%;
+            max-width:430px;
+        }
+
+        .login-form{
+            position:relative;
+            overflow:hidden;
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,0.4);
+            border-radius:28px;
+            padding:45px 35px;
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .login-form::before{
+            content:'';
+            position:absolute;
+            width:250px;
+            height:250px;
+            background:linear-gradient(135deg,#2563eb22,#7c3aed22);
+            border-radius:50%;
+            top:-120px;
+            right:-80px;
+        }
+
+        .logo{
+            width:90px;
+            height:90px;
+            margin:auto;
+            margin-bottom:22px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:38px;
+            color:white;
+            font-weight:700;
+            box-shadow:0 10px 25px rgba(37,99,235,0.3);
+            position:relative;
+            z-index:2;
+        }
+
+        .login-form h2{
+            text-align:center;
+            font-size:34px;
+            font-weight:700;
+            color:#111827;
+            margin-bottom:10px;
+            position:relative;
+            z-index:2;
+        }
+
+        .login-form p{
+            text-align:center;
+            color:#6b7280;
+            font-size:15px;
+            margin-bottom:30px;
+            position:relative;
+            z-index:2;
+        }
+
+        .input-group{
+            margin-bottom:22px;
+            position:relative;
+            z-index:2;
+        }
+
+        .input-group input{
+            width:100%;
+            padding:15px 18px;
+            border-radius:16px;
+            border:1px solid #dbeafe;
+            outline:none;
+            font-size:15px;
+            background:white;
+            transition:0.3s ease;
+            color:#111827;
+        }
+
+        .input-group input:focus{
+            border-color:#2563eb;
+            box-shadow:0 0 0 4px rgba(37,99,235,0.12);
+        }
+
+        .login-btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:16px;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            color:white;
+            font-size:15px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s ease;
+            position:relative;
+            z-index:2;
+
+            box-shadow:0 10px 20px rgba(37,99,235,0.25);
+        }
+
+        .login-btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 15px 30px rgba(37,99,235,0.35);
+        }
+
+        #error{
+            text-align:center;
+            margin-top:15px;
+            font-size:14px;
+            font-weight:500;
+            color:#dc2626;
+            position:relative;
+            z-index:2;
+        }
+
+        @media(max-width:500px){
+
+            .login-form{
+                padding:35px 25px;
+            }
+
+            .login-form h2{
+                font-size:28px;
+            }
+
+            .logo{
+                width:75px;
+                height:75px;
+                font-size:30px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
+
     <div class="login-container">
+
         <form class="login-form" onsubmit="login(event)">
+
+            <div class="logo">
+                🔐
+            </div>
+
             <h2>Member Access</h2>
+
             <p>Please log in to enter the portal</p>
 
             <div class="input-group">
@@ -20,24 +191,37 @@
                 <input type="password" id="password" placeholder="Password" required>
             </div>
 
-            <button type="submit" class="login-btn">Enter Portal</button>
+            <button type="submit" class="login-btn">
+                Enter Portal
+            </button>
 
-            <p id="error" style="color:red; margin-top:10px;"></p>
+            <p id="error"></p>
+
         </form>
+
     </div>
 
     <script>
+
         function login(event) {
+
             event.preventDefault();
 
-            const password = document.getElementById("password").value;
+            const password =
+            document.getElementById("password").value;
 
-            if (password === "Tillu") {
+            if(password === "Tillu"){
+
                 window.location.href = "dashboard.html";
-            } else {
-                document.getElementById("error").innerText = "Wrong password!";
+
+            }else{
+
+                document.getElementById("error").innerText =
+                "Wrong password!";
             }
         }
+
     </script>
+
 </body>
 </html>
