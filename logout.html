@@ -3,85 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout Page</title>
+    <title>Modern Logout Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
         *{
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial, sans-serif;
+            font-family:'Poppins',sans-serif;
         }
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
-}
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            background:
+            radial-gradient(circle at top left,#2563eb33,transparent 30%),
+            radial-gradient(circle at bottom right,#7c3aed33,transparent 30%),
+            #f3f6fb;
+            padding:20px;
+        }
 
-.logout-box{
-    background:rgba(255,255,255,0.08);
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    color:white;
-    width:350px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
+        .logout-box{
+            width:100%;
+            max-width:420px;
+            background:rgba(255,255,255,0.75);
+            backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,0.4);
+            border-radius:28px;
+            padding:45px 35px;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        .logout-box::before{
+            content:'';
+            position:absolute;
+            width:220px;
+            height:220px;
+            background:linear-gradient(135deg,#2563eb22,#7c3aed22);
+            border-radius:50%;
+            top:-100px;
+            right:-80px;
+        }
+
+        .icon{
+            width:90px;
+            height:90px;
+            margin:auto;
+            margin-bottom:20px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#ef4444,#dc2626);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:40px;
+            color:white;
+            box-shadow:0 10px 25px rgba(239,68,68,0.3);
+            position:relative;
+            z-index:2;
+        }
+
         .logout-box h1{
-            margin-bottom:15px;
-            font-size:28px;
+            font-size:34px;
+            font-weight:700;
+            color:#111827;
+            margin-bottom:12px;
+            position:relative;
+            z-index:2;
         }
 
         .logout-box p{
-            margin-bottom:25px;
-            color:#d1d5db;
+            font-size:15px;
+            line-height:1.8;
+            color:#4b5563;
+            margin-bottom:30px;
+            position:relative;
+            z-index:2;
+        }
+
+        .buttons{
+            display:flex;
+            justify-content:center;
+            gap:15px;
+            flex-wrap:wrap;
+            position:relative;
+            z-index:2;
         }
 
         .btn{
-            display:inline-block;
-            padding:12px 25px;
-            border:none;
-            border-radius:10px;
             text-decoration:none;
-            font-weight:bold;
-            transition:0.3s;
-            margin:5px;
+            padding:13px 24px;
+            border-radius:14px;
+            font-size:14px;
+            font-weight:600;
+            transition:0.3s ease;
+            min-width:140px;
         }
 
         .logout-btn{
-            background:#ef4444;
+            background:linear-gradient(135deg,#ef4444,#dc2626);
             color:white;
+            box-shadow:0 10px 20px rgba(239,68,68,0.25);
         }
 
         .logout-btn:hover{
-            background:#dc2626;
+            transform:translateY(-3px);
+            box-shadow:0 15px 25px rgba(239,68,68,0.35);
         }
 
         .cancel-btn{
-            background:#3b82f6;
-            color:white;
+            background:white;
+            color:#2563eb;
+            border:1px solid #dbeafe;
+            box-shadow:0 6px 15px rgba(0,0,0,0.05);
         }
 
         .cancel-btn:hover{
-            background:#2563eb;
+            transform:translateY(-3px);
+            background:#eff6ff;
         }
+
+        @media(max-width:500px){
+
+            .logout-box{
+                padding:35px 25px;
+            }
+
+            .logout-box h1{
+                font-size:28px;
+            }
+
+            .buttons{
+                flex-direction:column;
+            }
+
+            .btn{
+                width:100%;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
     <div class="logout-box">
+
+        <div class="icon">
+            ⎋
+        </div>
+
         <h1>Logout</h1>
 
-        <p>Are you sure you want to logout from your account?</p>
+        <p>
+            Are you sure you want to logout from your account?
+            You can login again anytime.
+        </p>
 
-        <!-- Changed here -->
-        <a href="Index.html" class="btn logout-btn">Yes, Logout</a>
+        <div class="buttons">
 
-        <a href="dashboard.html" class="btn cancel-btn">Cancel</a>
+            <a href="Index.html" class="btn logout-btn">
+                Yes, Logout
+            </a>
+
+            <a href="dashboard.html" class="btn cancel-btn">
+                Cancel
+            </a>
+
+        </div>
+
     </div>
 
 </body>
